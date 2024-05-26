@@ -28,7 +28,7 @@ const Categories = () => {
           // console.log(category.name);
           return (
             <div
-              key={categories.id}
+              key={category.id}
               className="border flex justify-center items-center p-5 rounded shadow-lg shadow-gray-300"
             >
               {category.name}

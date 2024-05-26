@@ -1,6 +1,7 @@
 import HorizontalCard from "../../../shared/HorizontalCard/HorizontalCard ";
 
-const Featured = () => {
+/* eslint-disable react/prop-types */
+const Featured = ({ products }) => {
   return (
     <>
       <div className="flex flex-col items-center">
@@ -9,10 +10,9 @@ const Featured = () => {
         </h1>
       </div>
       <div className="w-full grid md:grid-cols-4 justify-center items-center gap-4 p-4">
-        <HorizontalCard />
-        <HorizontalCard />
-        <HorizontalCard />
-        <HorizontalCard />
+        {products?.map((product) => (
+          <HorizontalCard key={product.id} product={product} />
+        ))}
       </div>
     </>
   );

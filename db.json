@@ -1,0 +1,114 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "Pants"
+    },
+    {
+      "id": "2",
+      "name": "Tops"
+    },
+    {
+      "id": "3",
+      "name": "Outerwear"
+    },
+    {
+      "id": "4",
+      "name": "Dresses"
+    },
+    {
+      "id": "5",
+      "name": "Sweatshirts"
+    },
+    {
+      "id": "6",
+      "name": "Footwear"
+    },
+    {
+      "id": "7",
+      "name": "Shorts"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Classic Blue Jeans",
+      "category": "Pants",
+      "description": "Timeless straight-cut blue jeans made from high-quality denim.",
+      "price": 49.99,
+      "image": "https://www.oceanmeidianshang.com/wp-content/uploads/2023/10/Business-Men-s-Jeans-Casual-Straight-Stretch-Fashion-Classic-Blue-Black-Work-Denim-Trousers-Male-Brand-1.webp"
+    },
+    {
+      "id": "2",
+      "name": "White Cotton T-Shirt",
+      "category": "Tops",
+      "description": "Soft and breathable white cotton t-shirt, perfect for everyday wear.",
+      "price": 19.99,
+      "image": "https://imgproxy.asket.com/e:1/width:640/resize:fit/quality:85/aHR0cHM6Ly9kM212ZGhhb2wwNjJmeS5jbG91ZGZyb250Lm5ldC8wL2IvNS8wLzBiNTA3ZTNiNWFkOGE2Yjg1ZjI1MzRlMDZhZTQ4ZDVmNTJiNjBhNzRfYXNrZXRfeXRlX3doX3doaV9zbGlkZXNob3dfMDEuanBn.webp"
+    },
+    {
+      "id": "3",
+      "name": "Black Leather Jacket",
+      "category": "Outerwear",
+      "description": "Stylish black leather jacket with a sleek, modern fit.",
+      "price": 199.99,
+      "image": "https://cdn.pixelspray.io/v2/black-bread-289bfa/woTKH5/wrkr/t.resize(h:1000,w:820)/data/Superdry/28112022img/410330327001_1.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Floral Summer Dress",
+      "description": "Light and airy floral dress, perfect for summer outings.",
+      "price": 69,
+      "category": "Pants",
+      "image": "https://www.sydnestyle.com/wp-content/uploads/2020/08/Sydne-Style-wears-wayf-eyelet-dress-for-summer-outfit-ideas-with-flat-sandals.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Navy Blue Chinos",
+      "category": "Pants",
+      "description": "Smart casual navy blue chinos, suitable for both work and leisure.",
+      "price": 59.99,
+      "image": "https://pantproject.com/cdn/shop/products/blue-chinos-for-men.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Red Polka Dot Blouse",
+      "category": "Tops",
+      "description": "Chic red blouse with white polka dots, ideal for a vintage look.",
+      "price": 34.99,
+      "image": "https://static.topvintage.net/shop-product/74540-The-Seamstress-of-Bloomsbury-Paula-Polkadot-Blouse-Red-and-White-112-27-11864-20150925-02-full.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Black Ankle Boots",
+      "category": "Footwear",
+      "description": "Trendy black ankle boots with a comfortable fit and durable sole.",
+      "price": 89.99,
+      "image": "https://hips.hearstapps.com/hmg-prod/images/gettyimages-1348707285-1-65a16ccc59ca1.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Green Parka Jacket",
+      "category": "Outerwear",
+      "description": "Warm green parka jacket with a faux fur-lined hood.",
+      "price": 129.99,
+      "image": "https://i.pinimg.com/564x/79/36/94/793694c55ae6d4a33f69a0b5134f7891.jpg"
+    },
+    {
+      "id": "10",
+      "name": "White Linen Shorts",
+      "category": "Shorts",
+      "description": "Cool and comfortable white linen shorts, perfect for hot weather.",
+      "price": 29.99,
+      "image": "https://blackficus.com/wp-content/uploads/2019/11/il_1140xN.2049783941_e4df-jpg.webp"
+    },
+    {
+      "id": "5",
+      "name": "Striped Long Sleeve Shirt",
+      "description": "Casual long sleeve shirt with blue and white stripes.",
+      "price": 29,
+      "category": "Tops",
+      "image": "https://static.pullandbear.net/2/photos//2024/V/0/1/p/7242/318/093/7242318093_2_3_8.jpg"
+    }
+  ]
+}

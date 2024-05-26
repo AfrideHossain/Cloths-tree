@@ -7,6 +7,8 @@ import Registration from "../pages/Registration/Registration";
 import DashboardLayout from "../layouts/DashboardLayout";
 import SecretRoutes from "./SecretRoutes/SecretRoutes";
 import AddProduct from "../pages/Dashboard/AddProduct/AddProduct";
+import AllProducts from "../pages/Dashboard/AllProducts/AllProducts";
+import EditProduct from "../pages/Dashboard/EditProduct/EditProduct";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader: () => fetch("http://localhost:3000/products"),
       },
     ],
   },
@@ -44,11 +47,17 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <h1>Dashboard</h1>,
+        element: <AllProducts />,
       },
       {
         path: "addproduct",
         element: <AddProduct />,
+      },
+      {
+        path: "editproduct/:id",
+        element: <EditProduct />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/products/${params.id}`),
       },
     ],
   },

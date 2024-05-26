@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const AddProduct = () => {
+const EditProduct = () => {
   const {
     register,
     handleSubmit,
@@ -11,6 +13,7 @@ const AddProduct = () => {
   } = useForm();
 
   const [categories, setCategories] = useState();
+  const product = useLoaderData();
   useEffect(() => {
     fetch("http://localhost:3000/categories")
       .then((res) => res.json())
@@ -20,18 +23,30 @@ const AddProduct = () => {
   }, []);
 
   const onSubmitHandler = (data) => {
-    fetch("http://localhost:3000/products", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((resData) => {
-        console.log(resData);
-        reset();
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#18a13d",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, confirm",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/products/${product.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((resData) => {
+            console.log(resData);
+            reset();
+          });
+      }
+    });
   };
   return (
     <>
@@ -41,7 +56,7 @@ const AddProduct = () => {
       >
         <div className="space-y-4">
           <h1 className="text-4xl text-center font-semibold">
-            Add New Product
+            Edit {product.name}
           </h1>
           <form className="card-body h-fit w-full md:w-[768px] border rounded-lg shadow-lg">
             <div className="form-control">
@@ -52,6 +67,7 @@ const AddProduct = () => {
                 type="text"
                 placeholder="id"
                 className="input input-bordered"
+                value={product.id}
                 required
                 {...register("id")}
               />
@@ -65,7 +81,7 @@ const AddProduct = () => {
                 placeholder="Name"
                 className="input input-bordered"
                 required
-                {...register("name")}
+                {...register("name", { value: product.name })}
               />
             </div>
             <div className="form-control">
@@ -77,7 +93,7 @@ const AddProduct = () => {
                 placeholder="Description"
                 className="input input-bordered"
                 required
-                {...register("description")}
+                {...register("description", { value: product.description })}
               />
             </div>
             <div className="form-control">
@@ -89,7 +105,10 @@ const AddProduct = () => {
                 placeholder="Price"
                 className="input input-bordered"
                 required
-                {...register("price", { valueAsNumber: true })}
+                {...register("price", {
+                  valueAsNumber: true,
+                  value: product.price,
+                })}
               />
             </div>
             <div className="form-control">
@@ -116,11 +135,11 @@ const AddProduct = () => {
                 placeholder="Product image"
                 className="input input-bordered"
                 required
-                {...register("image")}
+                {...register("image", { value: product.image })}
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Add</button>
+              <button className="btn btn-primary">Edit</button>
             </div>
           </form>
         </div>
@@ -129,4 +148,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default EditProduct;

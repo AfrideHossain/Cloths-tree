@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import VerticalCard from "../../../shared/Vertical/VerticalCard";
 
-const HomeShop = () => {
+const HomeShop = ({ products }) => {
   return (
     <>
       <div className="flex flex-col items-center">
@@ -10,10 +11,9 @@ const HomeShop = () => {
         </h1>
       </div>
       <div className="w-full grid md:grid-cols-4 justify-center items-center gap-4 p-4">
-        <VerticalCard />
-        <VerticalCard />
-        <VerticalCard />
-        <VerticalCard />
+        {products?.map((product) => (
+          <VerticalCard key={product.id} product={product} />
+        ))}
       </div>
       <div className="my-5 flex gap-6 justify-center items-center">
         <Link to={"/shop"} className="btn btn-accent w-40">
