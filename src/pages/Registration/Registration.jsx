@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuthContext from "../../hooks/useAuthContext";
+import { updateProfile } from "firebase/auth";
 import { useState } from "react";
 
-const Login = () => {
+const Registration = () => {
   const {
     register,
     handleSubmit,
@@ -13,18 +14,23 @@ const Login = () => {
   // states
   const [error, setError] = useState();
 
+  // essential things from authcontext
+  const { userRegisterWithPass, loginWithGoogle } = useAuthContext();
+
   // navigate and location
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  // essential things from authcontext
-  const { userLoginWithPass, loginWithGoogle } = useAuthContext();
-
   const onSubmitHandler = (data) => {
-    const { email, password } = data;
-    userLoginWithPass(email, password)
-      .then(() => {
+    const { username, email, password } = data;
+    userRegisterWithPass(email, password)
+      .then((result) => {
+        const currentUser = result.user;
+        updateProfile(currentUser, {
+          displayName: username,
+        }).then(() => {});
+        // console.log(result);
         //   navigate user
         navigate(from, { replace: true });
       })
@@ -48,11 +54,29 @@ const Login = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold py-6">Login now!</h1>
+            <h1 className="text-5xl font-bold py-6">Create An Account!</h1>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">
               <form onSubmit={handleSubmit(onSubmitHandler)}>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Username</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    className="input input-bordered"
+                    {...register("username", {
+                      required: true,
+                    })}
+                  />
+                  {errors.email?.type === "required" && (
+                    <p className="label text-red-500">
+                      Email address is required
+                    </p>
+                  )}
+                </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -88,15 +112,15 @@ const Login = () => {
                     <p className="label text-red-500">Password is required</p>
                   )}
                   <label className="label justify-start gap-1 text-sm mt-2">
-                    Don{"'"}t have an account?
-                    <Link to="register" className="text-blue-600">
-                      Create one!
+                    Already have an account?
+                    <Link to="/auth" className="text-blue-600">
+                      Login!
                     </Link>
                   </label>
                 </div>
                 <div className="form-control mt-6">
                   <button type="submit" className="btn btn-primary">
-                    Login
+                    Register
                   </button>
                 </div>
                 {error && <p className="label text-red-500">{error}</p>}
@@ -144,4 +168,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Registration;
