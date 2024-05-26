@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import useAuthContext from "../../hooks/useAuthContext";
 
 const Navbar = () => {
+  const { user, userLogOut } = useAuthContext();
   const navItems = (
     <>
       <li>
@@ -18,9 +20,7 @@ const Navbar = () => {
       <li>
         <Link to={"/"}>FAQ</Link>
       </li>
-      <li>
-        <Link to={"/"}>Dashboard</Link>
-      </li>
+      <li>{user && <Link to={"/dashboard"}>Dashboard</Link>}</li>
     </>
   );
   return (
@@ -57,7 +57,48 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={`${user.photoURL}`}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link className="justify-between" to={"/profile"}>
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      userLogOut();
+                    }}
+                  >
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link className="btn btn-primary" to={"/auth"}>
+              Login
+            </Link>
+          )}
         </div>
       </nav>
     </>
