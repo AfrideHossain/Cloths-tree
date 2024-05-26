@@ -1,6 +1,15 @@
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmitHandler = (data) => {
+    console.log(data);
+  };
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
@@ -10,7 +19,7 @@ const Login = () => {
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">
-              <form>
+              <form onSubmit={handleSubmit(onSubmitHandler)}>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -19,8 +28,15 @@ const Login = () => {
                     type="email"
                     placeholder="email"
                     className="input input-bordered"
-                    required
+                    {...register("email", {
+                      required: true,
+                    })}
                   />
+                  {errors.email?.type === "required" && (
+                    <p className="label text-red-500">
+                      Email address is required
+                    </p>
+                  )}
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -31,7 +47,13 @@ const Login = () => {
                     placeholder="password"
                     className="input input-bordered"
                     required
+                    {...register("password", {
+                      required: true,
+                    })}
                   />
+                  {errors.password?.type === "required" && (
+                    <p className="label text-red-500">Password is required</p>
+                  )}
                   <label className="label justify-start gap-1 text-sm mt-2">
                     Dont have an account?
                     <Link href="/" className="text-blue-600">
@@ -40,7 +62,9 @@ const Login = () => {
                   </label>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Login</button>
+                  <button type="submit" className="btn btn-primary">
+                    Login
+                  </button>
                 </div>
               </form>
               <div className="my-2 flex gap-3 justify-between items-center">
