@@ -3,11 +3,20 @@ import Featured from "../components/home/Featured/Featured";
 import Banner from "../components/home/Banner";
 import Popular from "../components/home/Popular/Popular";
 import HomeShop from "../components/home/HomeShop/HomeShop";
-import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-  const products = useLoaderData();
-  console.log(products);
+  // const products = useLoaderData();
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      });
+  }, []);
+  // console.log(products);
+  // use
   return (
     <>
       <Banner />

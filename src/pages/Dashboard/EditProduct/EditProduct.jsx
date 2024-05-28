@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const EditProduct = () => {
@@ -42,7 +43,12 @@ const EditProduct = () => {
         })
           .then((res) => res.json())
           .then((resData) => {
-            console.log(resData);
+            // console.log(resData);
+            if (resData) {
+              toast.success("Product updated");
+            } else {
+              toast.error("Something went wrong");
+            }
             reset();
           });
       }

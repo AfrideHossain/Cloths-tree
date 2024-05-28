@@ -33,9 +33,9 @@
     {
       "id": "1",
       "name": "Classic Blue Jeans",
-      "category": "Pants",
       "description": "Timeless straight-cut blue jeans made from high-quality denim.",
-      "price": 49.99,
+      "price": 50,
+      "category": "",
       "image": "https://www.oceanmeidianshang.com/wp-content/uploads/2023/10/Business-Men-s-Jeans-Casual-Straight-Stretch-Fashion-Classic-Blue-Black-Work-Denim-Trousers-Male-Brand-1.webp"
     },
     {
@@ -59,7 +59,7 @@
       "name": "Floral Summer Dress",
       "description": "Light and airy floral dress, perfect for summer outings.",
       "price": 69,
-      "category": "Pants",
+      "category": "Dresses",
       "image": "https://www.sydnestyle.com/wp-content/uploads/2020/08/Sydne-Style-wears-wayf-eyelet-dress-for-summer-outfit-ideas-with-flat-sandals.jpg"
     },
     {

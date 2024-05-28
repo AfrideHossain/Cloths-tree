@@ -20,7 +20,7 @@ const HorizontalCard = ({ product }) => {
             Price: $<span className="text-purple-600">{price}</span>
           </p>
           <div className="card-actions justify-end">
-            <Link className="btn btn-primary">
+            <Link className="btn btn-primary" to={`/product/${id}`}>
               <SlEye className="w-5 h-5" />
               View
             </Link>

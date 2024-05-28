@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const {
@@ -29,7 +30,11 @@ const AddProduct = () => {
     })
       .then((res) => res.json())
       .then((resData) => {
-        console.log(resData);
+        if (resData) {
+          toast.success("Product is added");
+        } else {
+          toast.error("Something went wrong");
+        }
         reset();
       });
   };

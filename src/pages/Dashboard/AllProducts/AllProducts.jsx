@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const AllProducts = () => {
@@ -31,11 +32,10 @@ const AllProducts = () => {
         })
           .then((res) => res.json())
           .then((resData) => {
-            // console.log(resData);
-            // reset();
             setProducts(
               products.filter((product) => product.id !== resData.id)
             );
+            toast.success("Product Deleted");
           });
       }
     });
@@ -70,6 +70,9 @@ const AllProducts = () => {
                 </p>
 
                 <div className="card-actions justify-end">
+                  <Link to={`/product/${product.id}`} className="btn btn-info">
+                    View
+                  </Link>
                   <Link
                     to={`editproduct/${product.id}`}
                     className="btn btn-primary"
